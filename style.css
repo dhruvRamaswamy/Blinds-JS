@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+* {
+   box-sizing: border-box;
+}
+
+ body {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+ }
+
+ .container {
+   display: flex;
+   width: 90vh;
+   overflow: hidden;
+ }
+
+ .panel {
+    background-size: auto 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 80vh;
+    border-radius: 50px;
+    color: white;
+    cursor: pointer;
+    /* You can set the width of the flex element by setting the flex property  */
+    flex: 0.5;
+    margin: 10px;
+    position: relative;
+    /* You the set the transition on the flex items indiviually, here we change the width */
+    transition: flex 0.7s ease-in-out; 
+ }
+
+ .panel h3 {
+   position: absolute;
+   bottom: 30px;
+   left: 30px;
+   font-size: 24px;
+   opacity: 0;
+   margin: 0;
+   transition: opacity 1s ease-in-out;
+   /* Set a width because otherwise there is going to be a weird adjusting effect */
+   width: 300px;
+ }
+
+ /* Very common technique */
+ .panel.active {
+   flex: 5;
+ }
+
+ .panel.active h3 {
+   opacity: 1;
+ }
+
+ @media screen and (max-width: 600px){
+   .container {
+      width: 100vw;
+   }
+
+   /* Interesting selector, this gets the 4 and 5 panel type  */
+   .panel:nth-of-type(4), .panel:nth-of-type(5) {
+      display: none;
+   }
+
+   .panel h3 {
+      width: 175px;
+   }
+
+
+ }
